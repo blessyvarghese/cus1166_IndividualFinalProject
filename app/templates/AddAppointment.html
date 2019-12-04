@@ -1,0 +1,52 @@
+<h1> Manage Appointments </h1>
+<div class="card-body">
+    <h4 class="card-title">Add Appointment</h4>
+    <form method="POST" action="{{url_for('main.AddAppointment')}}" >
+        <div class="add-items d-flex">
+            <!-- csrf_token is required to validate the form -->
+            {{ form.csrf_token }}
+
+            <p>
+            {{ form.Appointment_title.label}}
+            {{ form.Appointment_title}}
+            </p>
+
+            <p>
+            {{ form.Appointment_date.label}}
+            {{ form.Appointment_date}}
+            </p>
+            <p>
+            {{ form.Appointment_time.label}}
+            {{ form.Appointment_time}}
+            </p>
+            <p>
+            {{ form.Appointment_duration.label}}
+            {{ form.Appointment_duration}}
+            </p>
+            <p>
+            {{ form.Appointment_location.label}}
+            {{ form.Appointment_location}}
+            </p>
+            <p>
+            {{ form.Appointment_customer.label}}
+            {{ form.Appointment_customer}}
+            </p>
+
+            <p>
+            {{ form.Appointment_notes.label}}
+            {{ form.Appointment_notes}}
+            </p>
+
+            <p>{{ form.submit() }}</p>
+        </div>
+    </form>
+</div>
+
+<p>
+<h1> Here are the list of Appointments made</h1>
+<div>
+    { % for Appointments_added in Appointments_added %}
+        {{ Appointments_added.Appointment_title }} for {{ Appointments_added.Appointment_Customer }} at {{ Appointments_added.Appointment_location }}
+    { % endfor % }
+</div>
+</p>
